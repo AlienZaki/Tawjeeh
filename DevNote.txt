@@ -1,0 +1,104 @@
+Project: Tawjeeh
+
+@Clients: should pass 4 Stages.
+    - Client Status: hasFinished [True, False]; to determine if the client accomplished ALL STAGES or Not.
+    - Accomplished Stages: finishedStages [S1, S2, S3, S4].
+    - NOT accomplished Stages: notFinishedStages [S1, S2, S3, S4].
+    - Other details eg. @Barcode, Personal details, etc.
+
+@Stages:
+        0. Reception -> Getting a Barcode; to use it in the next 4 main Stages.
+
+        1. Du        -> has a Flag [S1] -> has Flag Status [True, False]; to determine if the client accomplished it or Not.
+        2. Reception -> has a Flag [S2] -> has Flag Status [True, False]; to determine if the client accomplished it or Not.
+        3. Hall      -> has a Flag [S3] -> has Flag Status [True, False]; to determine if the client accomplished it or Not.
+        4. Counter   -> has a Flag [S4] -> has Flag Status [True, False]; to determine if the client accomplished it or Not.
+
+@Roles:2*8
+    [Web Application Roles]
+        - Admin: viewing, managing, etc; will discuss it soon.
+        - UserType0(Reception): Generate a new Barcode and flag S1 as accomplished.
+
+    [Mobile Application Roles]
+        - UserType1(Reception): Generate a new Barcode(Web);  and flag S1 as accomplished(Mobile).
+        - UserType2(Du): Scan Client's Barcode and flag S2 as accomplished.
+        - UserType3(Hall): Scan Client's Barcode and flag S3 as accomplished.
+        - UserType4(Counter): Scan Client's Barcode and flag S4 as accomplished.
+
+        - UserType5(Security): Check clients Status, Stages route and .
+
+@Client's Route: Reception(GetBarcode)-> Du(Flag S1)-> Reception(Flag S2)-> Hall(Flag S3)-> Counter(Flag S4)-> Security(Check S[1:4])
+
+
+
+@Web Application: has 2 Roles [Admin, UserType0(Reception)]
+    # Admin: Users(Management/Creation/Editing); Clients(Management/Registration/Print Barcode);
+            = Page1(Dashboard; Statistics):
+
+            = Page2(Clients Management/Registration/Print Barcode):
+                - Name:
+                - ID:
+                - Phone1:
+                - Phone2: Optional
+                - Generate Barcode
+
+            = Page3(User Manage/Create):
+                - Username:
+                - Password:
+                - StageManage: [S1, S2, S3, S4]
+                - Photo: Optional
+
+
+    # UserType0(Reception): Filling Client's data and generating/printing Barcode.
+            = Page(Client Registration; Print Barcode):
+                - Name:
+                - ID:
+                - Phone1:
+                - Phone2: Optional
+                - Generate Barcode
+
+
+@API: for Developer (YSN):
+        [Mobile Application]
+            - FunctionCall(**params); Response.
+            - Login(Username, Password); {Status, Msg, User{Photo, StageManage}}
+            - GetClientDetails(Barcode); {Status, Msg, Client{Name, ID, Phone1, Phone2, Barcode, Stages{Status}}
+            - ConfirmStage(S); {Status, Msg}
+
+        [Web Application]
+            .....
+
+
+@Database:
+        - Table:Clients
+            - AI:Id
+            - *Str:Name
+            - *Str:Cid
+            - *Str:Phone1
+            - Str:Phone2
+            - *Str:Barcode
+
+        - Table:Stages
+            - AI:Id
+            - *Str:Barcode
+            - *Tiny:S1
+            - *Tiny:S2
+            - *Tiny:S3
+            - *Tiny:S4
+
+
+
+        - Table:MobileUsers
+            - AI:Id
+            - *Str:Username
+            - *Str:Password
+            - *Str:StageManage
+            - Str:Photo
+
+
+
+
+
+
+
+
