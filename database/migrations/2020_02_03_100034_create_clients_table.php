@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('cid');
             $table->string('phone1');
             $table->string('phone2')->default('')->nullable();
-            $table->string('barcode');
+            $table->string('qrcode');
             $table->boolean('s1')->default('0')->nullable();
             $table->boolean('s2')->default('0')->nullable();
             $table->boolean('s3')->default('0')->nullable();
