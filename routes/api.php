@@ -26,6 +26,9 @@ Route::prefix('v1')->group(function(){
     Route::group(['middleware' => 'auth:api'], function(){
         Route::post('client/{qrCode}', 'ClientController@getClient');
     });
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::post('client/{qrCode}/confirm', 'ClientController@flagStage');
+    });
 
 });
 
