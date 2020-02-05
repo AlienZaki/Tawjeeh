@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "9b4691de-ae50-4e3d-80bd-4b2708273466",
+		"name": "Tawjeeh",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Confirm Stage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOTQyYzhkOTBmYjRiMjVmMWY2YTExOWE2MTdlMjgxODIzNWI2ZDhkMzEyMzJmYjI0MTkxNzY4MzczZTYxODUwMzQ1YTVlNzY5MzljYWJmYmEiLCJpYXQiOjE1ODA4MzU2NzQsIm5iZiI6MTU4MDgzNTY3NCwiZXhwIjoxNjEyNDU4MDc0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.ierNnwrnnC9ZVM1lqR0i5Tk5522jiUlOWin-WmFnl6j236N5B7rAQ_jP8mnX9A6ufBK70oUfl8yZLehI2q6Om100MoWmdNWPOt2P-TeAro-Gvct6mSZKl1_4Br2eX_ClU5_7egoL_MiMRbhnH9gtWF-Gv0S0R7mva-A0Vv6KsquMXNN1LxUvCKo9gr3NSOmeUY85SHC1R5pU2CHLyEg3WOreLcQW-BugW2j9LzXOtmtvisxVQbV0G5kZpyiCX68bH6wNzxYiLjIUu1Y2_lpDCsv5dZyeka2BPSug-J_zzA4BCSdgtZMRRAolPVZ35r-D02kKfriqrIoL7wDJ53N3fzI3dYsCe7yAIhmMXC-NUWT2WnOeCjSHzXZF37xykrJCB1T0366-Po4amDbZ1nJXj74wp6KlYd-UDcahc0ivAshQJHcZSTiig8vT5Ue7Je3ejubBIQ1k0dFxo322bzLAYfYBAGVzVYLoeFD8ak2Qnvn88LK9GFe2FHp8pDbc8su878fQDF7BTp-HinW87vKblXU-EAXfovgNeWww7IT9-p83GMCrIQtHrF90rnFj7jgpyli2ypFfUOfNuoobkM58QSCR4kyhPeADSnRvxAQQAk49yOuBnmaVjkKOMpNQln8TazOKOE9b1-VYYdVq9_tnuAG8RDtKHbTUpLUvTs841q8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://tawjeeh.codyexa.com/api/v1/client/Tawjeeh_admin_123/confirm",
+					"protocol": "http",
+					"host": [
+						"tawjeeh",
+						"codyexa",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"Tawjeeh_admin_123",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get client data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOTQyYzhkOTBmYjRiMjVmMWY2YTExOWE2MTdlMjgxODIzNWI2ZDhkMzEyMzJmYjI0MTkxNzY4MzczZTYxODUwMzQ1YTVlNzY5MzljYWJmYmEiLCJpYXQiOjE1ODA4MzU2NzQsIm5iZiI6MTU4MDgzNTY3NCwiZXhwIjoxNjEyNDU4MDc0LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.ierNnwrnnC9ZVM1lqR0i5Tk5522jiUlOWin-WmFnl6j236N5B7rAQ_jP8mnX9A6ufBK70oUfl8yZLehI2q6Om100MoWmdNWPOt2P-TeAro-Gvct6mSZKl1_4Br2eX_ClU5_7egoL_MiMRbhnH9gtWF-Gv0S0R7mva-A0Vv6KsquMXNN1LxUvCKo9gr3NSOmeUY85SHC1R5pU2CHLyEg3WOreLcQW-BugW2j9LzXOtmtvisxVQbV0G5kZpyiCX68bH6wNzxYiLjIUu1Y2_lpDCsv5dZyeka2BPSug-J_zzA4BCSdgtZMRRAolPVZ35r-D02kKfriqrIoL7wDJ53N3fzI3dYsCe7yAIhmMXC-NUWT2WnOeCjSHzXZF37xykrJCB1T0366-Po4amDbZ1nJXj74wp6KlYd-UDcahc0ivAshQJHcZSTiig8vT5Ue7Je3ejubBIQ1k0dFxo322bzLAYfYBAGVzVYLoeFD8ak2Qnvn88LK9GFe2FHp8pDbc8su878fQDF7BTp-HinW87vKblXU-EAXfovgNeWww7IT9-p83GMCrIQtHrF90rnFj7jgpyli2ypFfUOfNuoobkM58QSCR4kyhPeADSnRvxAQQAk49yOuBnmaVjkKOMpNQln8TazOKOE9b1-VYYdVq9_tnuAG8RDtKHbTUpLUvTs841q8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "qrcode",
+							"value": "123",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://tawjeeh.codyexa.com/api/v1/client/Tawjeeh_admin_123",
+					"protocol": "http",
+					"host": [
+						"tawjeeh",
+						"codyexa",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"client",
+						"Tawjeeh_admin_123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mobile user login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ysn",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://tawjeeh.codyexa.com/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"tawjeeh",
+						"codyexa",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
