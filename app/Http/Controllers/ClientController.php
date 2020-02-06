@@ -5,9 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Client;
+use Validator;
 
 class ClientController extends Controller
 {
+
+    public function signup(Request $request){
+        $validator = Validator::make($request->all(),
+            [
+                'name' => 'required',
+                'cid' => 'required|unique:clients',
+                'phone1' => 'required',
+
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['success'=>false,'errors'=>$validator->errors()], 401);                        }
+        $input = $request->all();
+        $nextId = Client::orderBy('id', 'desc')->first()['id']+1;
+        $user = Auth::user();
+        $input['qrcode'] = 'Tawjeeh_'.$user['email'].'_'.$nextId;
+        $client = Client::create($input);
+        $msg = 'Client has been added!';
+        $res['qrcode'] = $client['qrcode'];
+        return response()->json(['success'=>true,'message'=>$msg, 'data'=>$res], 200);
+    }
+
     public function getClient($qrCode) {
         $client = Client::where('qrcode', $qrCode)->first();
         if($client){
@@ -38,9 +60,6 @@ class ClientController extends Controller
 
             $res['cid'] = $client['cid'];
             $res['name'] = $client['name'];
-            $res['phone1'] = $client['phone1'];
-            $res['phone2'] = $client['phone2'];
-            $res['qrcode'] = $client['qrcode'];
             $res['stages']['S1'] = $client['s1'];
             $res['stages']['S2'] = $client['s2'];
             $res['stages']['S3'] = $client['s3'];

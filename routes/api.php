@@ -18,10 +18,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function(){
+    Route::post('test', 'Api\AuthController@test');
     Route::post('login', 'Api\AuthController@login');
-    Route::post('register', 'Api\AuthController@register');
+    Route::post('user/create', 'Api\AuthController@signup');
+
+
     Route::group(['middleware' => 'auth:api'], function(){
         Route::post('getUser', 'Api\AuthController@getUser');
+    });
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::post('client/create', 'ClientController@signup');
     });
     Route::group(['middleware' => 'auth:api'], function(){
         Route::post('client/{qrCode}', 'ClientController@getClient');
@@ -29,6 +35,7 @@ Route::prefix('v1')->group(function(){
     Route::group(['middleware' => 'auth:api'], function(){
         Route::post('client/{qrCode}/confirm', 'ClientController@flagStage');
     });
+
 
 });
 

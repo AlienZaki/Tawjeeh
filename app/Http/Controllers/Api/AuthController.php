@@ -9,23 +9,29 @@ class AuthController extends Controller
 {
     public $successStatus = 200;
 
-    public function register(Request $request) {
-        $validator = Validator::make($request->all(),
-            [
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-                'c_password' => 'required|same:password',
-                'type' => 'required',
+    public function signup(Request $request) {
+        $stages = array('s1', 's2', 's3', 's4');
+        $types = array('web', 'mobile');
 
-            ]);
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'c_password' => 'required|same:password',
+            'type' => 'required|in:'.implode(',', $types),
+        ];
+        if ($request['type'] == 'mobile'){
+            $rules['stage'] = 'required|in:'.implode(',', $stages);
+        }
+
+        $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);                        }
+            return response()->json(['success'=>false,'data'=>$validator->errors()], 401);                        }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('AppName')->accessToken;
-        return response()->json(['success'=>'true','data'=>$success], 200);
+        $success['token'] =  'Bearer '.$user->createToken('AppName')->accessToken;
+        return response()->json(['success'=>true,'data'=>$success], 200);
     }
 
 
